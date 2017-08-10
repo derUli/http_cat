@@ -4,6 +4,8 @@ og_html_prefix ();
 ?>
 <head>
 <title><?php Template::escape(check_status());?></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="core.min.css" />
 <style type="text/css">
 body {
 	text-align: center;

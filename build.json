@@ -1,6 +1,6 @@
 {
    "id" : "http_cat",
-   "version" : "1.0",
+   "version" : "1.1",
    "description" : "HTTP Status Cat",
    "categories" : ["design"],
    "compatible_from" : "2017.3.12"
