@@ -6,9 +6,15 @@ class HttpCat extends Controller {
 		$status = explode ( " ", $status );
 		$status = intval ( $status [0] );
 		ViewBag::set ( "http_status_image", "https://http.cat/" . $status );
-		if (startsWith ( $status, "4" ) or startsWith ( $status, "5" )) {
+		if (startsWith ( $status, "4" ) or startsWith ( $status, "5" ) or (Request::getMethod () == "brew" || Request::hasVar ( "brew" ) || containsModule ( null, "teapot" ))) {
 			HTMLResult ( Template::executeModuleTemplate ( $this->moduleName, "fullcat.php" ), intval ( $status ) );
 		}
+	}
+	public function statusFilter($status) {
+		if (Request::getMethod () == "brew" || Request::hasVar ( "brew" ) || containsModule ( null, "teapot" )) {
+			$status = Request::getStatusCodeByNumber ( 418 );
+		}
+		return $status;
 	}
 	public function beforeMaintenanceMessage() {
 		$this->beforeHtml ();
